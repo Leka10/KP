@@ -4,8 +4,8 @@
     <test verbose="2" name="Parallel test" >
 
           <classes>
-              <class name="tests.tasks.Amazon" />
-              <class name="tests.tasks.Amazon" />
+              <class name="tests.tasks.KupujemProdajem" />
+              <class name="tests.tasks.KupujemProdajem" />
 
           </classes>
 

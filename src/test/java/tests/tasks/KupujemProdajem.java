@@ -13,8 +13,8 @@ import tests.BaseTestClass;
 
 import java.net.URL;
 
-public class Amazon extends BaseTestClass {
-    private static final URL scriptUrl = Amazon.class.getClassLoader().getResource("axe.min.js");
+public class KupujemProdajem extends BaseTestClass {
+    private static final URL scriptUrl = KupujemProdajem.class.getClassLoader().getResource("axe.min.js");
 
     private WebDriver driver;
 
