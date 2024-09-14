@@ -1,5 +1,8 @@
 package tests.tasks;
 
+import com.deque.axe.AXE;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -7,22 +10,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import tests.BaseTestClass;
-import utils.DateTimeUtils;
+
+import java.net.URL;
 
 public class Amazon extends BaseTestClass {
+    private static final URL scriptUrl = Amazon.class.getClassLoader().getResource("axe.min.js");
 
-    private String sTestName = this.getClass().getName();
     private WebDriver driver;
 
-//    private static final Logger logger = LoggerFactory.getLogger(testAmazon.class);
-//
-//    @Test
-//    public void testLogging() {
-//        logger.debug("This is a debug message");
-//        logger.info("This is an info message");
-//        logger.warn("This is a warn message");
-//        logger.error("This is an error message");
-//    }
         @BeforeMethod
         public void setUpTest() {
             log.debug("[SETUP TEST] ");
@@ -33,29 +28,28 @@ public class Amazon extends BaseTestClass {
     public synchronized void testAmazon() throws InterruptedException {
 
             HomePage homePage = new HomePage(driver).open();
-            homePage.clickOnTryDifferentImage();
-            homePage.searchForElement("hats for men");
-            homePage.clickOnFirstHat();
-            homePage.clickOnSizeDropdown();
-            homePage.selectAvailableSize();
-            homePage.clickOnQuantityDropdown();
-            homePage.selectQuantityTo2();
-            homePage.clickOnAddToCartButton();
-            homePage.clickOnGoToCartButton();
-            homePage.totalCart();
+        // Run Axe test
+        JSONObject responseJSON = new AXE.Builder(driver, scriptUrl).analyze();
 
-            homePage.searchForElement("hats for women");
-            homePage.clickOnFirstHat();
-            homePage.clickOnSizeDropdown();
-            homePage.clickOnQuantityDropdown();
-            homePage.selectQuantityTo1();
-            homePage.clickOnAddToCartButton();
-            homePage.clickOnGoToCartButton();
-            homePage.totalCart();
-            homePage.clickOnDropdownBoxOnCartPage();
-            homePage.changeQuantityTo1();
-            DateTimeUtils.wait(2); //here need to w8 sometime just to be sure after we changed quantity new values are loaded, because test is so fast that sometime he gets old values after changing quantity to 1 and then we have incorrect total values
-            homePage.totalCart();
+        // Show results
+        JSONArray violations = responseJSON.getJSONArray("violations");
+        if (violations.length() == 0) {
+            System.out.println("Problems with accessibility are not found.");
+        } else {
+//            AXE.writeResults("testAmazon", responseJSON);
+//            Assert.assertTrue(false, AXE.report(violations));
+            System.out.println("Problems with accessibility are found:");
+            for (int i = 0; i < violations.length(); i++) {
+                JSONObject violation = violations.getJSONObject(i);
+                System.out.println(violation.getString("description"));
+                System.out.println("Impact level: " + violation.getString("impact"));
+                JSONArray nodes = violation.getJSONArray("nodes");
+                for (int j = 0; j < nodes.length(); j++) {
+                    System.out.println("  - Element: " + nodes.getJSONObject(j).getJSONArray("target"));
+                }
+            }
+        }
+
     }
 
     @AfterMethod(alwaysRun = true)

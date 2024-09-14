@@ -9,7 +9,6 @@ import utils.PropertiesUtils;
 import utils.WebDriverUtils;
 
 import java.time.Duration;
-import java.util.function.Function;
 
 public abstract class BasePageClass extends LoggerUtils {
 

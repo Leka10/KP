@@ -2,10 +2,7 @@ package pages;
 
 import data.Time;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.FindBy;
 import utils.PropertiesUtils;
-
-import java.util.List;
 
 
 public class HomePage extends CommonLoggedOutPage {

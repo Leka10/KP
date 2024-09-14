@@ -1,7 +1,6 @@
 package utils;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
