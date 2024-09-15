@@ -1,10 +1,9 @@
-# Swagger Petstore Automation Tests
+# KP Automation Tests
 
 ## Setup
 
 1. Ensure you have Java and Maven installed on your local machine.
-2. Clone this repository.
-3. Navigate to the project directory.
+2. Put your webdriver in C:/drivers/
 
 ## Install Dependencies
 
