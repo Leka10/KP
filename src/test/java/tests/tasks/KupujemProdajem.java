@@ -4,6 +4,7 @@ import com.deque.axe.AXE;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,38 +25,55 @@ public class KupujemProdajem extends BaseTestClass {
             driver = setUpDriver();
         }
 
+//    @Test
+//    public synchronized void testKupujemProdajemJedan() throws InterruptedException {
+//
+//            HomePage homePage = new HomePage(driver).open();
+//
+//
+//            homePage.clickCloseLogInPopUp();
+//            homePage.openSearchFilters();
+//            homePage.openKategorija();
+//            homePage.selectZenskaOdeca();
+//            homePage.selectBluze();
+//            homePage.enterCenaOd();
+//            homePage.selectDinCurrency();
+//            homePage.selectSamoSaCenom();
+//            homePage.openStanjeFilter();
+//            homePage.selectStanjeNovo();
+//            homePage.selectStanjeKaoNovo();
+//            homePage.clickButtonPrimeniFiltere();
+//            Thread.sleep(2000);
+//            Assert.assertTrue(homePage.resultsMoreThan(2000));
+//    }
     @Test
-    public synchronized void testAmazon() throws InterruptedException {
+    public synchronized void testKupujemProdajemDva() throws InterruptedException {
 
-            HomePage homePage = new HomePage(driver).open();
-        // Run Axe test
-        JSONObject responseJSON = new AXE.Builder(driver, scriptUrl).analyze();
+        HomePage homePage = new HomePage(driver).open();
 
-        // Show results
-        JSONArray violations = responseJSON.getJSONArray("violations");
-        if (violations.length() == 0) {
-            System.out.println("Problems with accessibility are not found.");
-        } else {
-//            AXE.writeResults("testAmazon", responseJSON);
-//            Assert.assertTrue(false, AXE.report(violations));
-            System.out.println("Problems with accessibility are found:");
-            for (int i = 0; i < violations.length(); i++) {
-                JSONObject violation = violations.getJSONObject(i);
-                System.out.println(violation.getString("description"));
-                System.out.println("Impact level: " + violation.getString("impact"));
-                JSONArray nodes = violation.getJSONArray("nodes");
-                for (int j = 0; j < nodes.length(); j++) {
-                    System.out.println("  - Element: " + nodes.getJSONObject(j).getJSONArray("target"));
-                }
-            }
-        }
+
+        homePage.clickCloseLogInPopUp();
+        homePage.openSearchFilters();
+        homePage.openKategorija();
+        homePage.selectZenskaOdeca();
+        homePage.selectBluze();
+        homePage.enterCenaOd();
+        homePage.selectDinCurrency();
+        homePage.selectSamoSaCenom();
+        homePage.openStanjeFilter();
+        homePage.selectStanjeNovo();
+        homePage.selectStanjeKaoNovo();
+        homePage.clickButtonPrimeniFiltere();
+        Thread.sleep(2000);
+        homePage.clickOnPrviOglas();
+
 
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDownTest(ITestResult testResult) {
         log.debug("[END TEST] ");
-        tearDown(driver, testResult);
+//        tearDown(driver, testResult);
     }
 
 }

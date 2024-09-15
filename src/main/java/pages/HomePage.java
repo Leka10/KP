@@ -2,6 +2,7 @@ package pages;
 
 import data.Time;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
 import utils.PropertiesUtils;
 
 
@@ -9,26 +10,20 @@ public class HomePage extends CommonLoggedOutPage {
 
     private final String LOGIN_PAGE_URL = PropertiesUtils.getBaseUrl();
 
-    private final By tryDifferentImageLocator = By.xpath("//div[@class='a-column a-span6 a-span-last a-text-right']");
-    private final By searchFieldLocator = By.id("twotabsearchtextbox");
-    private final By searchButtonLocator = By.id("nav-search-submit-button");
-    private final By firstHatLocator = By.xpath("//div[@class='a-section aok-relative s-image-square-aspect'][1]");
-    private final By sizeDropdownLocator = By.xpath("//span[@data-csa-c-content-id='dropdown_selected_size_name']");
-    private final By availableSizeLocator = By.xpath("//li[@class='a-dropdown-item dropdownAvailable']");
-    private final By quantityDropdownLocator = By.xpath("//div[@id='selectQuantity']");
-    private final By quantity2Locator = By.xpath("//a[@data-value='{\"stringVal\":\"2\"}']");
-    private final By quantity1Locator = By.xpath("//a[@data-value='{\"stringVal\":\"1\"}']");
-    private final By addToCartButtonLocator = By.id("add-to-cart-button");
-    private final By goToCartButtonLocator = By.id("sw-gtc");
-    private final By numberOfItemsLocator = By.xpath("//div[@data-csa-c-type='item']");
-    private final By quantityOfItemLocator = By.xpath("//span[@class='a-dropdown-prompt']");
-    private final By priceOfItemLocator = By.xpath("//span[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap sc-product-price a-text-bold']");
-    private final By totalItemsQuantityLocator = By.id("sc-subtotal-label-activecart");
-    private final By totalItemsPriceLocator = By.id("sc-subtotal-amount-activecart");
-    private final By quantityBoxOnCartLocator = By.id("a-autoid-3");
-
-    private float fQuantityOfItem;
-    float[] quantityPerItem = new float[10];
+    private final By closeLogInPopUp = By.xpath("//button[@class='Button_base__G3HTK Button_big__vkHxv Modal_closeIcon__CJuTW']");
+    private final By kategorija = By.id("react-select-categoryId-input");
+    private final By zenskaOdeca = By.id("react-select-categoryId-option-46");
+    private final By bluze = By.id("react-select-groupId-option-0");
+    private final By searchFilters = By.xpath("//button[@aria-label='Pretražite detaljno ']");
+    private final String cenaOd = "priceFrom";
+    private final By dinCurrency = By.xpath("//input[@aria-label='rsd']");
+    private final By samoSaCenom = By.xpath("//label[@for='hasPriceyes']");
+    private final By stanjeFilter = By.id("react-select-condition-input");
+    private final By stanjeNovo = By.xpath("//label[@for='checkbox-new']");
+    private final By stanjeKaoNovo = By.xpath("//label[@for='checkbox-as-new']");
+    private final By buttonPrimeniFiltere = By.xpath("//button[@aria-label='Primeni filtere']");
+    private final By grid = By.xpath("//*[@id=\"__next\"]/div/div[3]/div/div/div[2]/div[1]/div/div/span/div/span");
+    private final By prviOglas = By.xpath("//div[@class='AdItem_name__Knlo6'][1]");
 
 
     public HomePage(WebDriver driver) {
@@ -55,176 +50,99 @@ public class HomePage extends CommonLoggedOutPage {
         waitUntilPageIsReady(Time.TIME_MEDIUM);
     }
 
-    public void clickOnTryDifferentImage() {
-        try {
-            WebElement clickOnTryDifferentImage = getWebElement(tryDifferentImageLocator);
-            System.out.println("You are on robot verification page");
-            clickOnTryDifferentImage.click();
-        } catch (NoSuchElementException e) {
-            System.out.println("You are on home page");
-        }
-    }
-    public void typeToSearchFile(String string) {
-        WebElement searchField = getWebElement(searchFieldLocator);
-        clearAndTypeTextToWebElement(searchField, string);
-    }
-    public void clickOnSearchButton() {
-        WebElement clickOnSearchButton = getWebElement(searchButtonLocator);
+    public void clickCloseLogInPopUp() {
+        WebElement clickOnSearchButton = getWebElement(closeLogInPopUp);
         waitUntilClickable(clickOnSearchButton);
         clickOnSearchButton.click();
     }
-    public void searchForElement(String string) {
-        log.debug("searchForElement(" + string + ")");
-        typeToSearchFile(string);
-        clickOnSearchButton();
+    public void openSearchFilters() {
+        WebElement element = getWebElement(searchFilters);
+        element.click();
     }
-    public void clickOnFirstHat() {
-        WebElement clickOnFirstHat = getWebElement(firstHatLocator);
-//        waitUntilClickable(clickOnFirstHat);
-        clickOnFirstHat.click();
+    public void openKategorija() {
+        WebElement element = getWebElement(kategorija);
+        element.click();
     }
-    public void clickOnSizeDropdown() {
-        try {
-            WebElement clickOnSizeDropdown = getWebElement(sizeDropdownLocator);
-            System.out.println("Size dropdown is preset");
-            clickOnSizeDropdown.click();
-        } catch (NoSuchElementException e) {
-            System.out.println("Its one sized item");
+    public void selectZenskaOdeca() {
+        WebElement element = getWebElement(zenskaOdeca);
+        element.click();
+    }
+    public void selectBluze() {
+        WebElement element = getWebElement(bluze);
+        element.click();
+    }
+
+    public void enterCenaOd ()
+    {
+        WebElement element = driver.findElement(By.id(cenaOd));
+        typeTextToWebElement(element, "100");
+    }
+    public void selectDinCurrency ()
+    {
+        WebElement element = getWebElement(dinCurrency);
+        element.click();
+    }
+    public void selectSamoSaCenom ()
+    {
+        WebElement element = getWebElement(samoSaCenom);
+        element.click();
+    }
+    public void openStanjeFilter ()
+    {
+        WebElement element = getWebElement(stanjeFilter);
+        element.click();
+    }
+    public void selectStanjeNovo ()
+    {
+        WebElement element = getWebElement(stanjeNovo);
+        element.click();
+    }
+    public void selectStanjeKaoNovo ()
+    {
+        WebElement element = getWebElement(stanjeKaoNovo);
+        element.click();
+    }
+    public void clickButtonPrimeniFiltere ()
+    {
+        WebElement element = getWebElement(buttonPrimeniFiltere);
+        element.click();
+    }
+    public int getNumberOfResults ()
+    {
+        WebElement element = getWebElement(grid);
+        System.out.println(element.getText());
+        String text = element.getText();
+        String[] texts = text.split(" ");
+        String temp = texts[0];
+        String sBrojRezultata;
+        if (temp.contains(".")) {
+            String string = temp.replace(".", "");
+            sBrojRezultata = string;
+        } else {
+            sBrojRezultata = temp;
         }
+        int i = Integer.parseInt(sBrojRezultata);
+        return i;
     }
-
-//    public void clickOnSizeDropdown2() {
-//        boolean sizeDropdownPresent = driver.findElements(By.xpath("//select[@id='native_dropdown_selected_size_name']")).size() > 0;
-//        if(sizeDropdownPresent) {
-//            WebElement clickOnSizeDropdown = getWebElement(sizeDropdownLocator);
-//            System.out.println("Size dropdown is present");
-//            clickOnSizeDropdown.click();
-//
-//            selectAvailableSize();
-//        }
-//        else return;
-//    }
-
-    public void selectAvailableSize() {
-        try {
-            WebElement selectAvailableSize = getWebElement(availableSizeLocator);
-
-            System.out.println("There is available size");
-            selectAvailableSize.click();
-        } catch (NoSuchElementException | TimeoutException e) {
-            System.out.println("Size dropdown is not open or element is not clickable");
-        } catch (Exception e) {
-            System.out.println("An unexpected error occurred: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-    public void clickOnQuantityDropdown() {
-        WebElement clickOnQuantityDropdown = getWebElement(quantityDropdownLocator);
-        clickOnQuantityDropdown.click();
-    }
-    public void selectQuantityTo1() {
-        WebElement selectQuantityTo1 = getWebElement(quantity1Locator);
-        selectQuantityTo1.click();
-    }
-    public void selectQuantityTo2() {
-        WebElement selectQuantityTo2 = getWebElement(quantity2Locator);
-        selectQuantityTo2.click();
-    }
-    public void clickOnAddToCartButton () {
-        WebElement clickOnAddToCartButton = getWebElement(addToCartButtonLocator);
-        clickOnAddToCartButton.click();
-        System.out.println("Item is added to Cart!");
-    }
-    public void clickOnGoToCartButton() {
-        WebElement clickOnGoToCartButton = getWebElement(goToCartButtonLocator);
-        clickOnGoToCartButton.click();
-        System.out.println("You are on Cart page!");
-    }
-    public int numberOfItems() {
-        int numberOfItems = driver.findElements(numberOfItemsLocator).size();
-        return numberOfItems;
-    }
-
-    public float quantityOfItem() {
-        String quantityOfItem = "";
-        float sum = 0;
-
-        for (int i=1; i<=numberOfItems(); i++) {
-
-//            WebElement element = getWebElement(By.xpath("(//div[@data-csa-c-type='item'][" + i + "]"));
-//            quantityOfItem = getWebElement((By) quantityOfItemLocator).getText();
-//            System.out.println("quantityOfItem: " + quantityOfItem);
-
-            WebElement element = getWebElement(By.xpath("(//span[@class='a-dropdown-prompt'])[" + i + "]"));
-            quantityOfItem = element.getText();
-            fQuantityOfItem = Float.parseFloat(quantityOfItem);
-            quantityPerItem[i - 1] = fQuantityOfItem;
-
-            sum += Float.parseFloat(quantityOfItem);
-        }
-        System.out.println("Sum of items: " + sum);
-        return sum;
-        //return Float.parseFloat(quantityOfItem);
-    }
-
-    public float priceOfItem() {
-        String priceOfItem = "";
-        float sum = 0;
-
-        for (int i=1; i<=numberOfItems(); i++) {
-            WebElement element = getWebElement(By.xpath("(//span[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap sc-product-price a-text-bold'])" + "[" + i + "]"));
-            priceOfItem = element.getText().substring(1);
-            System.out.println("priceOfItem: " + priceOfItem);
-
-            sum += Float.parseFloat(priceOfItem) * quantityPerItem[i-1];
-
-        }
-        System.out.println("Sum of price is: " + sum);
-        return sum;
-    }
-
-    public boolean totalCart() {
-
-        //compare number of elements
-        WebElement totalQuant = getWebElement(totalItemsQuantityLocator);
-        String sTotalQuantity = String.valueOf(totalQuant.getText().charAt(10));
-        Float fTotalQuantity = Float.parseFloat(sTotalQuantity);
-//        if(fTotalQuantity.equals(quantityOfItem())){
-//            System.out.println("Quantity is correct");
-//        }else {
-//            System.out.println("Quantity is incorrect");
-//        }
-
-        WebElement totalPrice = getWebElement(totalItemsPriceLocator);
-        String sTotalPrice = String.valueOf(totalPrice.getText().substring(2));
-        Float fTotalPrice = Float.parseFloat(sTotalPrice);
-//        if(fTotalPrice.equals(priceOfItem())){
-//            System.out.println("Price is correct");
-//        }else {
-//            System.out.println("Price is incorrect");
-//        }
-
-
-        if(fTotalQuantity.equals(quantityOfItem()) && fTotalPrice.equals(priceOfItem())){
-            System.out.println("Total quantity and total price are correct!");
+    public boolean resultsMoreThan (int i)
+    {
+        int iBrojRezultata = getNumberOfResults();
+        if (iBrojRezultata > i)
+        {
+            System.out.println("Prikazano je vise rezultata od " + i );
             return true;
-        }else {
-            System.out.println("Total quantity and total price are incorrect!");
+        }
+        else
+        {
+            System.out.println("Prikazano je manje rezultata od " + i );
             return false;
         }
-
     }
-    public void clickOnDropdownBoxOnCartPage () {
 
-        WebElement clickOnDropdownBox = getWebElement(quantityBoxOnCartLocator);
-        clickOnDropdownBox.click();
-
-    }
-    public void changeQuantityTo1 () {
-
-        WebElement changeQuantityTo1 = getWebElement(quantity1Locator);
-        changeQuantityTo1.click();
-
+    public void clickOnPrviOglas ()
+    {
+        WebElement element = getWebElement(prviOglas);
+        element.click();
     }
 
     public void refreshPage () {

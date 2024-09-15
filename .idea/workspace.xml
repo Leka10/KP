@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2dbb8f51-f68d-4db3-8a1d-b2d718cc6ab8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/axe.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2dbb8f51-f68d-4db3-8a1d-b2d718cc6ab8" name="Changes" comment="KP commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/BasePageClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/BasePageClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/PropertiesUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PropertiesUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/WebDriverUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/WebDriverUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/common.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/common.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/BaseTestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/BaseTestClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/tasks/Amazon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/tasks/Amazon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/tasks/KupujemProdajem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/tasks/KupujemProdajem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2m2ShXwxg3LIIDn68czIopbxGZ8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,6 +30,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TestNG.Amazon.executor": "Run",
+    "TestNG.KupujemProdajem.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Aleksa/IdeaProjects/KP/pom.xml",
@@ -50,7 +42,7 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="Amazon" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="KupujemProdajem" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="KP" />
       <extension name="coverage">
         <pattern>
@@ -59,7 +51,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests.tasks" />
-      <option name="MAIN_CLASS_NAME" value="tests.tasks.Amazon" />
+      <option name="MAIN_CLASS_NAME" value="tests.tasks.KupujemProdajem" />
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
@@ -69,7 +61,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.Amazon" />
+        <item itemvalue="TestNG.KupujemProdajem" />
       </list>
     </recent_temporary>
   </component>
@@ -82,6 +74,27 @@
       <option name="presentableId" value="Default" />
       <updated>1726273298218</updated>
     </task>
+    <task id="LOCAL-00001" summary="KP commit">
+      <option name="closed" value="true" />
+      <created>1726274100940</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726274100940</updated>
+    </task>
+    <task id="LOCAL-00002" summary="KP commit">
+      <option name="closed" value="true" />
+      <created>1726274365729</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726274365729</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="KP commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="KP commit" />
   </component>
 </project>
