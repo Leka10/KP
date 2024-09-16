@@ -69,4 +69,9 @@ public abstract class BasePageClass extends LoggerUtils {
         log.trace("getValueFromWebElement(" + element + ")" );
         return getAttributeFromWebElement(element, "value");
     }
+
+    public static WebElement waitUntilElementIsVisible(WebDriver driver, By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 }

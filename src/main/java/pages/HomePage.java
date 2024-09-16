@@ -10,20 +10,22 @@ public class HomePage extends CommonLoggedOutPage {
 
     private final String LOGIN_PAGE_URL = PropertiesUtils.getBaseUrl();
 
-    private final By closeLogInPopUp = By.xpath("//button[@class='Button_base__G3HTK Button_big__vkHxv Modal_closeIcon__CJuTW']");
-    private final By kategorija = By.id("react-select-categoryId-input");
-    private final By zenskaOdeca = By.id("react-select-categoryId-option-46");
-    private final By bluze = By.id("react-select-groupId-option-0");
-    private final By searchFilters = By.xpath("//button[@aria-label='Pretražite detaljno ']");
-    private final String cenaOd = "priceFrom";
-    private final By dinCurrency = By.xpath("//input[@aria-label='rsd']");
-    private final By samoSaCenom = By.xpath("//label[@for='hasPriceyes']");
-    private final By stanjeFilter = By.id("react-select-condition-input");
-    private final By stanjeNovo = By.xpath("//label[@for='checkbox-new']");
-    private final By stanjeKaoNovo = By.xpath("//label[@for='checkbox-as-new']");
-    private final By buttonPrimeniFiltere = By.xpath("//button[@aria-label='Primeni filtere']");
-    private final By grid = By.xpath("//*[@id=\"__next\"]/div/div[3]/div/div/div[2]/div[1]/div/div/span/div/span");
-    private final By prviOglas = By.xpath("//div[@class='AdItem_name__Knlo6'][1]");
+    private static final By closeLogInPopUp = By.xpath("//button[@class='Button_base__G3HTK Button_big__vkHxv Modal_closeIcon__CJuTW']");
+    private static final By kategorija = By.id("react-select-categoryId-input");
+    private static final By zenskaOdeca = By.id("react-select-categoryId-option-46");
+    private static final By bluze = By.id("react-select-groupId-option-0");
+    private static final By searchFilters = By.xpath("//button[@aria-label='Pretražite detaljno ']");
+    private static final String cenaOd = "priceFrom";
+    private static final By dinCurrency = By.xpath("//input[@aria-label='rsd']");
+    private static final By samoSaCenom = By.xpath("//label[@for='hasPriceyes']");
+    private static final By stanjeFilter = By.id("react-select-condition-input");
+    private static final By stanjeNovo = By.xpath("//label[@for='checkbox-new']");
+    private static final By stanjeKaoNovo = By.xpath("//label[@for='checkbox-as-new']");
+    private static final By buttonPrimeniFiltere = By.xpath("//button[@aria-label='Primeni filtere']");
+    private static final By grid = By.xpath("//*[@id=\"__next\"]/div/div[3]/div/div/div[2]/div[1]/div/div/span/div/span");
+    private static final By prviOglas = By.xpath("//div[@class='AdItem_name__Knlo6']");
+    private static final By dodajUAdresar = By.xpath("//button[@class='Button_base__G3HTK Button_small__32ZFH ButtonTertiary2_tertiary2__AllBF ButtonTertiary2_small__2cEaR']");
+    public static final By loginForma = By.xpath("//div[@class='LoginContent_register__IeA6K']");
 
 
     public HomePage(WebDriver driver) {
@@ -51,9 +53,8 @@ public class HomePage extends CommonLoggedOutPage {
     }
 
     public void clickCloseLogInPopUp() {
-        WebElement clickOnSearchButton = getWebElement(closeLogInPopUp);
-        waitUntilClickable(clickOnSearchButton);
-        clickOnSearchButton.click();
+        WebElement element = getWebElement(closeLogInPopUp);
+        element.click();
     }
     public void openSearchFilters() {
         WebElement element = getWebElement(searchFilters);
@@ -144,6 +145,23 @@ public class HomePage extends CommonLoggedOutPage {
         WebElement element = getWebElement(prviOglas);
         element.click();
     }
+    public void clickDodajUAdresar ()
+    {
+        WebElement element = getWebElement(dodajUAdresar);
+        element.click();
+    }
+    public boolean isLoginVisible ()
+    {
+        WebElement element = getWebElement(loginForma);
+        if (element.isDisplayed()) {
+            System.out.println("Login forma je vidljiva.");
+            return true;
+        } else {
+            System.out.println("Login forma nije vidljiva.");
+            return false;
+        }
+    }
+
 
     public void refreshPage () {
         driver.navigate().refresh();
